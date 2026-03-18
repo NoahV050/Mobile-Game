@@ -38,6 +38,43 @@
     <div class="start-best">Beste score: <strong id="start-best-val">0s</strong></div>
   </section>
 
+<!--Game scherm  -->
+  <section class="screen" id="screen-game">
+    <div class="game-header">
+      <div class="game-ceiling">
+        <div class="spotlight spotlight-1"></div>
+        <div class="spotlight spotlight-2"></div>
+      </div>
+      <div class="game-floor"></div>
+      <div class="hud">
+        <div class="hud-pill">
+          <div class="hud-label">Tijd</div>
+          <div class="hud-val" id="hud-time">0s</div>
+        </div>
+        <div class="hud-pill">
+          <div class="hud-label">Score</div>
+          <div class="hud-val" id="hud-score">0</div>
+        </div>
+      </div>
+    </div>
+    <div class="play-area">`
+      <span id="lifter">🧑‍🦰</span>
+      <canvas id="barbell-canvas" width="300" height="90"></canvas>
+    <div class="balance-track">
+      <div class="balance-thumb" id="balance-thumb"></div>
+    </div>
+    <div class="instr" id="instr-text">📱 Kantel je telefoon!</
+    </div>
+    </div> class="controls">
+      <button class="ctrl-btn" id="btn-left">◀</button>
+      <div class="ctrl-center">
+        <button class="ctrl-btn" id="btn-restart">🔄</button>
+        <button class="ctrl-btn" id="btn-home">🏠</button>
+      </div>
+      <button class="ctrl-btn" id="btn-right">▶</button>
+    </div>
+  </section>
+
   <!-- GAME OVER SCHERM -->
   <section class="screen" id="screen-gameover">
     <div class="go-title">GAME OVER!</div>
@@ -55,8 +92,28 @@
   </section>
 </div>
 
+<!-- HIGHSCORES SCHERM -->
+<section class="screen" id="screen-highscores">
+  <h2>🏆 Highscores</h2>
+  <p>Hier komen de scores...</p>
+  <button data-screen="start">← Terug</button>
+</section>
+
+<!-- INSTELLINGEN SCHERM -->
+<section class="screen" id="screen-settings">
+  <h2>⚙️ Instellingen</h2>
+  <p>Hier komen de instellingen...</p>
+  <button data-screen="start">← Terug</button>
+</section>
+
+<!-- GAMEPLAY SCHERM -->
+<section class="screen" id="screen-game">
+  <p>Het spel start hier...</p>
+</section>
+
+
 <script src="js/ui.js"></script>
 <script src="js/game.js"></script>
-<script src="js/main.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
