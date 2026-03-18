@@ -1,0 +1,31 @@
+/* GAMEPLAY */
+#screen-game {
+  background: #0d111e;
+  justify-content: center;
+}
+
+/* HIGHSCORES */
+#screen-highscores {
+  background: linear-gradient(170deg, #003d00, #000e00);
+  justify-content: flex-start;
+  padding-top: 80px;
+}
+
+/* INSTELLINGEN */
+#screen-settings {
+  background: linear-gradient(170deg, #1a1a3e, #050514);
+  justify-content: flex-start;
+  padding-top: 80px;
+}
+
+
+body {
+  background: #000;
+  color: white;
+}
+
+body.licht {
+  background: white;
+  color: black;
+}
+
