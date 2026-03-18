@@ -17,3 +17,15 @@
   justify-content: flex-start;
   padding-top: 80px;
 }
+
+
+body {
+  background: #000;
+  color: white;
+}
+
+body.licht {
+  background: white;
+  color: black;
+}
+

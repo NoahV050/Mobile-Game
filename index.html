@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="GymBalance" />
   <meta name="theme-color" content="#1a6fc4" />
+  <link rel="manifest" href="manifest.json" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/start.css" />
   <link rel="stylesheet" href="css/screens.css" />
+  <link rel="stylesheet" href="css/start.css" />
   <title>Gym Balance</title>
 </head>
 <body>
@@ -23,7 +27,11 @@
       <div class="logo-sub">BALANCE</div>
       <div class="logo-tagline">⚡ Houd de halter in balans! ⚡</div>
     </div>
+    <div class="start-barbell-wrap">
+      <canvas id="canvas-start" width="280" height="110"></canvas>
+    </div>
     <div class="start-buttons">
+      <button class="btn btn-blue"   data-action="modus knop">☀️ Licht/Donker</button>
       <button class="btn btn-green"  data-action="startGame">🏋️ START GAME</button>
       <button class="btn btn-orange" data-screen="highscores">🏆 HIGHSCORES</button>
       <button class="btn btn-gray"   data-screen="settings">⚙️ INSTELLINGEN</button>
@@ -35,6 +43,22 @@
   <section class="screen" id="screen-game">
     <div class="page-title">Spel komt hier</div>
     <button class="btn btn-gray back-btn" data-screen="start">← Terug</button>
+  </section>
+
+  <!-- GAME OVER SCHERM -->
+  <section class="screen" id="screen-gameover">
+    <div class="go-title">GAME OVER!</div>
+    <div class="go-emoji">😵</div>
+    <div class="go-card">
+      <div class="go-label">Jouw Score</div>
+      <div class="go-score-val" id="go-score">0s</div>
+      <div class="go-best">Best: <span id="go-best-val">0s</span></div>
+      <div class="go-new-record" id="go-new-record">🎉 NIEUW RECORD!</div>
+    </div>
+    <div class="go-buttons">
+      <button class="btn btn-green" data-action="startGame">🔄 OPNIEUW</button>
+      <button class="btn btn-blue"  data-screen="start">🏠 HOOFDMENU</button>
+    </div>
   </section>
 
   <!-- HIGHSCORES SCHERM -->
@@ -51,7 +75,9 @@
 
 </div>
 
+<!-- Scripts: ui.js altijd eerst, dan pas main.js -->
 <script src="js/ui.js"></script>
+<script src="js/game.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
