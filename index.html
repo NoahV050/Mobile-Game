@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/screens.css" />
   <link rel="stylesheet" href="css/start.css" />
-  <title>Gym Balance </title>
+  <title>Gym Balance</title>
 </head>
 <body>
 <div id="app">
@@ -39,6 +39,12 @@
     <div class="start-best">Beste score: <strong id="start-best-val">0s</strong></div>
   </section>
 
+  <!-- GAMEPLAY SCHERM -->
+  <section class="screen" id="screen-game">
+    <div class="page-title">Spel komt hier</div>
+    <button class="btn btn-gray back-btn" data-screen="start">← Terug</button>
+  </section>
+
   <!-- GAME OVER SCHERM -->
   <section class="screen" id="screen-gameover">
     <div class="go-title">GAME OVER!</div>
@@ -50,12 +56,26 @@
       <div class="go-new-record" id="go-new-record">🎉 NIEUW RECORD!</div>
     </div>
     <div class="go-buttons">
-      <button class="btn btn-green"  data-action="startGame">🔄 OPNIEUW</button>
-      <button class="btn btn-blue"   data-screen="start">🏠 HOOFDMENU</button>
+      <button class="btn btn-green" data-action="startGame">🔄 OPNIEUW</button>
+      <button class="btn btn-blue"  data-screen="start">🏠 HOOFDMENU</button>
     </div>
   </section>
+
+  <!-- HIGHSCORES SCHERM -->
+  <section class="screen" id="screen-highscores">
+    <div class="page-title">🏆 Highscores</div>
+    <button class="btn btn-gray back-btn" data-screen="start">← Terug</button>
+  </section>
+
+  <!-- INSTELLINGEN SCHERM -->
+  <section class="screen" id="screen-settings">
+    <div class="page-title">⚙️ Instellingen</div>
+    <button class="btn btn-gray back-btn" data-screen="start">← Terug</button>
+  </section>
+
 </div>
 
+<!-- Scripts: ui.js altijd eerst, dan pas main.js -->
 <script src="js/ui.js"></script>
 <script src="js/game.js"></script>
 <script src="js/main.js"></script>
