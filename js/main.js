@@ -5,7 +5,7 @@ var audio = new AudioContext();
 function speelKlik() {
   var toon = audio.createOscillator();
   toon.connect(audio.destination);
-  toon.frequency.value = 600; // was 0, daarom geen geluid
+  toon.frequency.value = 0; // was 0, daarom geen geluid
   toon.start();
   toon.stop(audio.currentTime + 0.08);
 }
@@ -42,3 +42,4 @@ document.querySelectorAll('[data-action]').forEach(function(knop) {
     }
   });
 });
+
