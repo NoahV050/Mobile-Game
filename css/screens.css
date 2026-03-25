@@ -29,3 +29,103 @@ body.licht {
   color: black;
 }
 
+/* HUD bovenaan */
+.hud {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 20px 0;
+  z-index: 10;
+}
+
+.hud-pill {
+  background: rgba(0,0,0,0.5);
+  border-radius: 14px;
+  padding: 8px 18px;
+  text-align: center;
+}
+
+.hud-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.hud-val {
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+}
+
+#hud-tijd  { color: #5dade2; }
+#hud-score { color: #f5c800; }
+
+/* Speelgebied */
+.spel-gebied {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#lifter {
+  font-size: 80px;
+  transition: transform 0.1s;
+}
+
+/* Balans balk */
+.balans-balk {
+  width: 190px;
+  height: 14px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 7px;
+  margin-top: 16px;
+  position: relative;
+}
+
+.balans-duim {
+  position: absolute;
+  top: 2px;
+  width: 26px;
+  height: 10px;
+  border-radius: 5px;
+  background: #27ae60;
+  transition: left 0.08s, background 0.2s;
+  left: 82px;
+}
+
+.instructie {
+  color: rgba(255,255,255,0.4);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 12px;
+  letter-spacing: 2px;
+}
+
+/* Knoppen onderaan */
+.knoppen {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 40px;
+}
+
+.ctrl-knop {
+  width: 90px;
+  height: 90px;
+  border-radius: 20px;
+  border: none;
+  background: #2980b9;
+  box-shadow: 0 6px 0 #1a5f8a;
+  color: white;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.ctrl-knop:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #1a5f8a;
+}

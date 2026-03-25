@@ -39,11 +39,34 @@
     <div class="start-best">Beste score: <strong id="start-best-val">0s</strong></div>
   </section>
 
-  <!-- GAMEPLAY SCHERM -->
-  <section class="screen" id="screen-game">
-    <div class="page-title">Spel komt hier</div>
-    <button class="btn btn-gray back-btn" data-screen="start">← Terug</button>
-  </section>
+<!-- GAMEPLAY SCHERM -->
+<section class="screen" id="screen-game">
+  <div class="hud">
+    <div class="hud-pill">
+      <div class="hud-label">Tijd</div>
+      <div class="hud-val" id="hud-tijd">0s</div>
+    </div>
+    <div class="hud-pill">
+      <button class="btn btn-red exit-knop" id="knop-exit">✕ Stop</button>
+      <div class="hud-label">Score</div>
+      <div class="hud-val" id="hud-score">0</div>
+    </div>
+  </div>
+
+  <div class="spel-gebied">
+    <span id="lifter">🧑‍🦰</span>
+    <canvas id="barbell-canvas" width="300" height="100"></canvas>
+    <div class="balans-balk">
+      <div class="balans-duim" id="balans-duim"></div>
+    </div>
+    <p class="instructie">← en → knoppen om te balanceren</p>
+  </div>
+
+  <div class="knoppen">
+    <button class="ctrl-knop" id="knop-links">◀</button>
+    <button class="ctrl-knop" id="knop-rechts">▶</button>
+  </div>
+</section>
 
   <!-- GAME OVER SCHERM -->
   <section class="screen" id="screen-gameover">

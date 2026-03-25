@@ -37,3 +37,10 @@ document.querySelectorAll('[data-action]').forEach(function(knop) {
     }
   });
 });
+
+document.getElementById('knop-exit').addEventListener('click', function() {
+  spelLoopt = false;
+  clearInterval(scoreTimer);
+  cancelAnimationFrame(animatieId);
+  showScreen('start');
+});
