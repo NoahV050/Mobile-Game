@@ -5,14 +5,9 @@ var audio = new AudioContext();
 function speelKlik() {
   var toon = audio.createOscillator();
   toon.connect(audio.destination);
-  toon.frequency.value = 600; // was 0, daarom geen geluid
+  toon.frequency.value = 0;
   toon.start();
   toon.stop(audio.currentTime + 0.08);
-}
-
-// Game over functie
-function gameOver(score) {
-  saveAndShowGameOver(score);
 }
 
 // Trilling bij game over
@@ -35,7 +30,7 @@ document.querySelectorAll('[data-action]').forEach(function(knop) {
   knop.addEventListener('click', function() {
     if (knop.dataset.action === 'startGame') {
       speelKlik();
-      showScreen('game');
+      startGame();
     }
     if (knop.dataset.action === 'modus knop') {
       document.body.classList.toggle('licht');
