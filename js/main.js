@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Zoek alle knoppen met data-screen attribuut
 // Voorbeeld: <button data-screen="highscores">
 document.querySelectorAll('[data-screen]').forEach(function(knop) {
@@ -9,7 +8,6 @@ document.querySelectorAll('[data-screen]').forEach(function(knop) {
 });
 
 // Knoppen met data-screen → navigeren naar dat scherm
-=======
 // De geluidsmachine
 var audio = new AudioContext();
 
@@ -35,7 +33,6 @@ function trillen() {
 }
 
 // Knoppen met data-screen → naar dat scherm
->>>>>>> main
 document.querySelectorAll('[data-screen]').forEach(function(knop) {
   knop.addEventListener('click', function() {
     showScreen(knop.dataset.screen);
@@ -49,7 +46,6 @@ document.querySelectorAll('[data-action]').forEach(function(knop) {
       startGame();
     }
   });
-<<<<<<< HEAD
 });// Knoppen met data-screen → navigeren naar dat scherm
 document.querySelectorAll('[data-screen]').forEach(function(knop) {
   knop.addEventListener('click', function() {
@@ -64,7 +60,5 @@ document.querySelectorAll('[data-action]').forEach(function(knop) {
       startGame();
     }
   });
-=======
->>>>>>> main
 });
 
