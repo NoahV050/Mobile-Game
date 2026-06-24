@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+// Zoek alle knoppen met data-screen attribuut
+// Voorbeeld: <button data-screen="highscores">
+document.querySelectorAll('[data-screen]').forEach(function(knop) {
+  knop.addEventListener('click', function() {
+    var schermNaam = knop.dataset.screen; // leest "highscores" of "settings" etc.
+    showScreen(schermNaam);               // roept de functie hierboven aan
+  });
+});
+
+// Knoppen met data-screen → navigeren naar dat scherm
+=======
 // De geluidsmachine
 var audio = new AudioContext();
 
@@ -23,23 +35,36 @@ function trillen() {
 }
 
 // Knoppen met data-screen → naar dat scherm
+>>>>>>> main
 document.querySelectorAll('[data-screen]').forEach(function(knop) {
   knop.addEventListener('click', function() {
-    speelKlik();
     showScreen(knop.dataset.screen);
   });
 });
 
-// Knoppen met data-action → voer actie uit
+// Knoppen met data-action → voer die actie uit
 document.querySelectorAll('[data-action]').forEach(function(knop) {
   knop.addEventListener('click', function() {
     if (knop.dataset.action === 'startGame') {
-      speelKlik();
-      showScreen('game');
-    }
-    if (knop.dataset.action === 'modus knop') {
-      document.body.classList.toggle('licht');
+      startGame();
     }
   });
+<<<<<<< HEAD
+});// Knoppen met data-screen → navigeren naar dat scherm
+document.querySelectorAll('[data-screen]').forEach(function(knop) {
+  knop.addEventListener('click', function() {
+    showScreen(knop.dataset.screen);
+  });
+});
+
+// Knoppen met data-action → voer die actie uit
+document.querySelectorAll('[data-action]').forEach(function(knop) {
+  knop.addEventListener('click', function() {
+    if (knop.dataset.action === 'startGame') {
+      startGame();
+    }
+  });
+=======
+>>>>>>> main
 });
 
