@@ -27,3 +27,4 @@ Een installeerbare Progressive Web App! Balance de halter zo lang mogelijk.
 | Middel | Normaal | 75% |
 | Zwaar | Snel | 70% |
 
+Test
