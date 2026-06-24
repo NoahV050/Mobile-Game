@@ -1,64 +1,62 @@
-// Wisselt het actieve scherm
+// ── Schermnavigatie ──
 function showScreen(id) {
-  document.querySelectorAll('.screen').forEach(function(scherm) {
-    scherm.classList.remove('active');
-  });
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + id).classList.add('active');
+  if (id === 'highscores') renderHighscores();
+  if (id === 'start')      updateStartBest();
 }
 
-
-if (id === 'highscores') {
-    toonHighscores();
-    }
-
-// Haal de naam op uit localStorage
-// Als er nog geen naam is, vraag het dan
-var spelerNaam = localStorage.getItem('spelerNaam');
-
-if (spelerNaam === null) {
-  spelerNaam = prompt('Wat is je naam?');
-  localStorage.setItem('spelerNaam', spelerNaam);
-}
+// ── Highscores (localStorage) ──
+const HS_KEY = 'gymbalance_hs';
 
 function getScores() {
-    try {
-        return JSON.parse(localStorage.getItem('gymbalance.hs')) || [];
-    } catch {
-        return [];
-    }
+  try { return JSON.parse(localStorage.getItem(HS_KEY)) || []; } catch { return []; }
 }
 
-    // Score opslaan
-    function saveScore(score, naam) {
-        var scores = getScores();
-        scores.push({ score: score, naam: naam });
-        scores.sort(function(a, b) { return b.score - a.score; });
-        scores = scores.slice(0, 5); // Bewaar alleen de top 5
-        localStorage.setItem('gymbalance.hs', JSON.stringify(scores));
-    }
+function saveAndShowGameOver(sec) {
+  const scores = getScores();
+  scores.push(sec);
+  scores.sort((a, b) => b - a);
+  const top = scores.slice(0, 5);
+  localStorage.setItem(HS_KEY, JSON.stringify(top));
 
-    // Highscores tonen
-    function toonHighscores() {
-        var scores = getScores();
-        var lijst = document.getElementById('hs-list');
-        
-        if (scores.length === 0) {
-            lijst.innerHTML = '<li>Geen scores gevonden</li>';
-            return;
-        }
+  document.getElementById('go-score').textContent    = sec + 's';
+  document.getElementById('go-best-val').textContent = top[0] + 's';
+  document.getElementById('go-new-record').classList.toggle('show', sec === top[0]);
+  showScreen('gameover');
+}
 
-    }
-    
-    // medals top 5
-    var medals = ['🥇', '🥈', '🥉', '🏅', '🏅'];
+function renderHighscores() {
+  const scores = getScores();
+  const list   = document.getElementById('hs-list');
+  if (!scores.length) {
+    list.innerHTML = '<div class="hs-empty">Nog geen scores!<br>Ga spelen 🏋️</div>';
+    return;
+  }
+  const ranks = ['🥇','🥈','🥉','4.','5.'];
+  list.innerHTML = scores.map((s, i) => `
+    <div class="hs-row" style="animation-delay:${i * .07}s">
+      <div class="hs-rank">${ranks[i]}</div>
+      <div class="hs-name">Jij</div>
+      <div class="hs-pts">${s}s</div>
+    </div>`).join('');
+}
 
-    list.innerHTML = "";
-    
-    scores.forEach(function(item, i) {
-        list.innerHTML += 
-        '<div class="hhs-row">' +
-                '<div class="hs-rank">' + medals[i] + '</div>' +
-        '<div class="hs-name">' + item.naam + '</div>' +
-        '<div class="hs-pts">' + item.score + 's</div>' +
-      '</div>';
-  });
+function updateStartBest() {
+  const s = getScores();
+  document.getElementById('start-best-val').textContent = (s[0] || 0) + 's';
+}
+
+// ── Instellingen ──
+const settings = { gyro: true, diff: 'easy' };
+
+function toggleSetting(key) {
+  settings[key] = !settings[key];
+  document.getElementById('toggle-' + key).classList.toggle('on', settings[key]);
+}
+
+function setDiff(d) {
+  settings.diff = d;
+  document.querySelectorAll('.diff-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.diff === d));
+}

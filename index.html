@@ -13,8 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/screens.css" />
-  <link rel="stylesheet" href="css/start.css" />
-  <title>Gym Balance</title>
+  <link rel="stylesheet" href="css/animations.css" />
+  <title>Gym Balance 🏋️</title>
 </head>
 <body>
 <div id="app">
@@ -26,12 +26,11 @@
       <div class="logo-title">GYM</div>
       <div class="logo-sub">BALANCE</div>
       <div class="logo-tagline">⚡ Houd de halter in balans! ⚡</div>
-    </div> 
+    </div>
     <div class="start-barbell-wrap">
       <canvas id="canvas-start" width="280" height="110"></canvas>
     </div>
     <div class="start-buttons">
-      <button class="btn btn-blue"   data-action="modus knop">☀️ Licht/Donker</button>
       <button class="btn btn-green"  data-action="startGame">🏋️ START GAME</button>
       <button class="btn btn-orange" data-screen="highscores">🏆 HIGHSCORES</button>
       <button class="btn btn-gray"   data-screen="settings">⚙️ INSTELLINGEN</button>
@@ -39,36 +38,42 @@
     <div class="start-best">Beste score: <strong id="start-best-val">0s</strong></div>
   </section>
 
-<!-- GAMEPLAY SCHERM -->
-<section class="screen" id="screen-game">
-  <div class="hud">
-    <div class="hud-pill">
-      <div class="hud-label">Tijd</div>
-      <div class="hud-val" id="hud-tijd">0s</div>
+  <!-- GAMEPLAY SCHERM -->
+  <section class="screen" id="screen-game">
+    <div class="gym-ceiling">
+      <div class="spotlight spotlight-1"></div>
+      <div class="spotlight spotlight-2"></div>
     </div>
-    <div class="hud-pill">
-      <button class="btn btn-red exit-knop" id="knop-exit">✕ Stop</button>
-      <div class="hud-label">Score</div>
-      <div class="hud-val" id="hud-score">0</div>
+    <div class="gym-floor"></div>
+    <div class="hud">
+      <div class="hud-pill">
+        <div class="hud-label">Tijd</div>
+        <div class="hud-val" id="hud-time">0s</div>
+      </div>
+      <div class="hud-pill">
+        <div class="hud-label">Score</div>
+        <div class="hud-val" id="hud-score">0</div>
+      </div>
     </div>
-  </div>
-
-  <div class="spel-gebied">
-    <span id="lifter">🧑‍🦰</span>
-    <canvas id="barbell-canvas" width="300" height="100"></canvas>
-    <div class="balans-balk">
-      <div class="balans-duim" id="balans-duim"></div>
+    <div class="play-area">
+      <span id="lifter">🧑‍🦰</span>
+      <canvas id="barbell-canvas" width="300" height="90"></canvas>
+      <div class="balance-track">
+        <div class="balance-thumb" id="balance-thumb"></div>
+      </div>
+      <div class="instr" id="instr-text">📱 Kantel je telefoon!</div>
     </div>
-    <p class="instructie">← en → knoppen om te balanceren</p>
-  </div>
+    <div class="controls">
+      <button class="ctrl-btn" id="btn-left">◀</button>
+      <div class="ctrl-center">
+        <span>⏱️</span>
+        <span class="ctrl-label">of kantel</span>
+      </div>
+      <button class="ctrl-btn" id="btn-right">▶</button>
+    </div>
+  </section>
 
-  <div class="knoppen">
-    <button class="ctrl-knop" id="knop-links">◀</button>
-    <button class="ctrl-knop" id="knop-rechts">▶</button>
-  </div>
-</section>
-
-  <!-- GAME OVER SCHERM -->
+  <!-- GAME OVER SCHERM Test --> 
   <section class="screen" id="screen-gameover">
     <div class="go-title">GAME OVER!</div>
     <div class="go-emoji">😵</div>
@@ -79,27 +84,49 @@
       <div class="go-new-record" id="go-new-record">🎉 NIEUW RECORD!</div>
     </div>
     <div class="go-buttons">
-      <button class="btn btn-green" data-action="startGame">🔄 OPNIEUW</button>
-      <button class="btn btn-blue"  data-screen="start">🏠 HOOFDMENU</button>
+      <button class="btn btn-green"  data-action="startGame">🔄 OPNIEUW</button>
+      <button class="btn btn-blue"   data-screen="start">🏠 HOOFDMENU</button>
     </div>
   </section>
 
   <!-- HIGHSCORES SCHERM -->
   <section class="screen" id="screen-highscores">
     <div class="page-title">🏆 Highscores</div>
+    <div class="hs-list" id="hs-list"></div>
     <button class="btn btn-gray back-btn" data-screen="start">← Terug</button>
   </section>
 
   <!-- INSTELLINGEN SCHERM -->
   <section class="screen" id="screen-settings">
     <div class="page-title">⚙️ Instellingen</div>
+    <div class="settings-group">
+      <div class="setting-row">
+        <div>
+          <div class="setting-label">Gyroscoop</div>
+          <div class="setting-sub">Kantel telefoon om te besturen</div>
+        </div>
+        <div class="toggle on" id="toggle-gyro" data-setting="gyro"></div>
+      </div>
+      <div class="setting-row">
+        <div>
+          <div class="setting-label">Moeilijkheid</div>
+          <div class="setting-sub">Hoe snel de halter scheef gaat</div>
+        </div>
+        <div class="diff-btns">
+          <button class="diff-btn active" data-diff="easy">Mak</button>
+          <button class="diff-btn"        data-diff="medium">Mid</button>
+          <button class="diff-btn"        data-diff="hard">Zwaar</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-red" id="btn-clear-scores">🗑️ Scores wissen</button>
     <button class="btn btn-gray back-btn" data-screen="start">← Terug</button>
   </section>
 
 </div>
 
-<!-- Scripts: ui.js altijd eerst, dan pas main.js -->
 <script src="js/ui.js"></script>
+<script src="js/draw.js"></script>
 <script src="js/game.js"></script>
 <script src="js/main.js"></script>
 </body>
